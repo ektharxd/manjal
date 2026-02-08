@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import AboutGallery from './components/AboutGallery';
-import Therapies from './components/Therapies';
-import Doctors from './components/Doctors';
-import HospitalDetails from './components/HospitalDetails';
-import Consultation from './components/Consultation';
-import AllServices from './components/AllServices';
-import FloatingDock from './components/FloatingDock';
 import LoadingIntro from './components/LoadingIntro';
+
+const AboutGallery = lazy(() => import('./components/AboutGallery'));
+const Therapies = lazy(() => import('./components/Therapies'));
+const Doctors = lazy(() => import('./components/Doctors'));
+const HospitalDetails = lazy(() => import('./components/HospitalDetails'));
+const Consultation = lazy(() => import('./components/Consultation'));
+const AllServices = lazy(() => import('./components/AllServices'));
+const FloatingDock = lazy(() => import('./components/FloatingDock'));
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -17,22 +18,40 @@ const App: React.FC = () => {
   return (
     <main className="w-full min-h-screen bg-[#030305] text-white relative">
       <LoadingIntro onComplete={() => setLoading(false)} />
-      
-      {/* If Services Page is active, show it on top of everything OR conditionally render */}
+
       {showAllServices ? (
-        <AllServices onBack={() => setShowAllServices(false)} />
+        <Suspense fallback={<div className="p-8 text-center">Loading services…</div>}>
+          <AllServices onBack={() => setShowAllServices(false)} />
+        </Suspense>
       ) : (
         <>
           <Navbar onOpenServices={() => setShowAllServices(true)} />
           <Hero />
-          <AboutGallery />
-          <Therapies />
-          <Doctors />
-          <HospitalDetails />
-          <Consultation />
-          <FloatingDock onOpenServices={() => setShowAllServices(true)} />
-          
-          {/* Footer / Copyright */}
+
+          <Suspense fallback={<div className="h-24" />}>
+            <AboutGallery />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-24" />}>
+            <Therapies />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-24" />}>
+            <Doctors />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-24" />}>
+            <HospitalDetails />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-24" />}>
+            <Consultation />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-24" />}>
+            <FloatingDock onOpenServices={() => setShowAllServices(true)} />
+          </Suspense>
+
           <footer className="py-8 bg-black text-center text-gray-600 text-xs border-t border-white/5 font-inter-tight">
             <p>&copy; {new Date().getFullYear()} Manjal Ayurveda Speciality Clinic. All rights reserved.</p>
           </footer>

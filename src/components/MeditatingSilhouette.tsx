@@ -310,7 +310,7 @@ const MeditatingSilhouette: React.FC<MeditatingSilhouetteProps> = ({ activeChakr
       <div className="absolute inset-0 z-20">
         {CHAKRAS.map((chakra) => {
           const isActive = activeChakra === chakra.id;
-          
+
           return (
             <div
               key={chakra.id}

@@ -1,9 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MeditatingSilhouette from './MeditatingSilhouette';
 import ChakraList from './ChakraList';
+import { CHAKRAS } from '../constants';
 
 const Hero: React.FC = () => {
   const [activeChakra, setActiveChakra] = useState<string | null>(null);
+
+  // Scroll logic for mobile/tablet to activate chakras
+  useEffect(() => {
+    const handleScroll = () => {
+      // Only run on mobile/tablet (smaller than lg breakpoint)
+      if (window.innerWidth >= 1024) return;
+
+      const scrollY = window.scrollY;
+      const screenHeight = window.innerHeight;
+      
+      // Range where activation happens (e.g., first 50% of the screen height scrolling)
+      // We map scroll position to chakra index (0 to 6)
+      const activationRange = screenHeight * 0.5; 
+      
+      if (scrollY < activationRange) {
+        // Calculate index based on progress
+        const index = Math.floor((scrollY / activationRange) * CHAKRAS.length);
+        const safeIndex = Math.min(Math.max(index, 0), CHAKRAS.length - 1);
+        
+        // Reverse order because usually we want Crown -> Root or Root -> Crown?
+        // CHAKRAS array is [Crown, Third Eye ... Root] (Top to Bottom)
+        // If we scroll down, we usually scan down the body. So index 0 at top is correct.
+        
+        setActiveChakra(CHAKRAS[safeIndex].id);
+      } else {
+        // If scrolled past, keep the last one or clear? Let's clear after a bit more scroll
+        if (scrollY > activationRange + 100) {
+            setActiveChakra(null);
+        } else {
+            setActiveChakra(CHAKRAS[CHAKRAS.length - 1].id);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#030305] pt-24 lg:pt-20">

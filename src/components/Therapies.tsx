@@ -126,9 +126,9 @@ const treatments = [
 
 const Therapies: React.FC = () => {
     return (
-        <section id="therapies" className="py-24 bg-[#042f1f] border-t border-white/5 relative overflow-hidden">
-            {/* Background Texture (dark green radial accent) */}
-            <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,_#064e3b,_transparent)]"></div>
+        <section id="therapies" className="py-24 bg-[#469869] border-t border-white/5 relative overflow-hidden">
+            {/* Background Texture (matching green radial accent) */}
+            <div className="absolute inset-0 opacity-24 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,_#2f7a59,_transparent)]"></div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <ScrollReveal>

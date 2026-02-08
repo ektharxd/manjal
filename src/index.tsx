@@ -8,12 +8,16 @@ import HospitalDetails from './components/HospitalDetails';
 import Consultation from './components/Consultation';
 import AllServices from './components/AllServices';
 import FloatingDock from './components/FloatingDock';
+import LoadingIntro from './components/LoadingIntro';
 
 const App: React.FC = () => {
+  const [loading, setLoading] = useState(true);
   const [showAllServices, setShowAllServices] = useState(false);
 
   return (
     <main className="w-full min-h-screen bg-[#030305] text-white relative">
+      <LoadingIntro onComplete={() => setLoading(false)} />
+      
       {/* If Services Page is active, show it on top of everything OR conditionally render */}
       {showAllServices ? (
         <AllServices onBack={() => setShowAllServices(false)} />

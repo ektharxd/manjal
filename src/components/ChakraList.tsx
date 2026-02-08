@@ -72,7 +72,7 @@ const ChakraList: React.FC<ChakraListProps> = ({ activeChakra, onHover }) => {
                   {/* Description - Accordion Effect */}
                   <div className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100 mt-3' : 'grid-rows-[0fr] opacity-0'}`}>
                     <div className="overflow-hidden">
-                      <p className="text-sm text-gray-400 leading-relaxed border-t border-white/10 pt-3 font-sans">
+                      <p className="text-sm text-gray-400 leading-relaxed border-t border-white/10 pt-3 font-inter-tight">
                         {chakra.description}
                       </p>
                     </div>

@@ -34,7 +34,7 @@ const HospitalDetails: React.FC = () => {
                                 </div>
                                 <div>
                                     <p className="text-white text-xs font-bold font-inter-tight">Punnamood, Varkala</p>
-                                    <a href="https://maps.app.goo.gl/LiGwMxeuHE4BuZXLO" target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-400 hover:text-white transition-colors flex items-center gap-1 mt-0.5">
+                                    <a href="https://maps.app.goo.gl/h93LWNBg39tQkVZH8" target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-400 hover:text-white transition-colors flex items-center gap-1 mt-0.5">
                                         Open in Maps
                                         {/* @ts-ignore */}
                                         <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>

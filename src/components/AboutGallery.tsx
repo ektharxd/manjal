@@ -83,12 +83,12 @@ const AboutGallery: React.FC = () => {
 
                         <div className="mt-10 flex items-center gap-8">
                             <div>
-                                <h4 className="text-3xl font-bold text-white font-inter-tight">15+</h4>
+                                <h4 className="text-3xl font-bold text-white font-inter-tight">5+</h4>
                                 <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Years Experience</p>
                             </div>
                             <div className="w-[1px] h-10 bg-white/10"></div>
                             <div>
-                                <h4 className="text-3xl font-bold text-white font-inter-tight">5k+</h4>
+                                <h4 className="text-3xl font-bold text-white font-inter-tight">900+</h4>
                                 <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Happy Patients</p>
                             </div>
                         </div>

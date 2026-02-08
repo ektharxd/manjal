@@ -5,13 +5,31 @@ import { CHAKRAS } from '../constants';
 
 const Hero: React.FC = () => {
   const [activeChakra, setActiveChakra] = useState<string | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
-  // Scroll logic for mobile/tablet to activate chakras
+  const handleHover = (id: string | null) => {
+    setIsHovering(!!id);
+    setActiveChakra(id);
+  };
+
+  // Auto-cycle effect (loops through chakras when at the top and not hovering)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (window.scrollY < 50 && !isHovering) {
+        setActiveChakra((prev) => {
+          const currentIndex = CHAKRAS.findIndex((c) => c.id === prev);
+          const nextIndex = (currentIndex + 1) % CHAKRAS.length;
+          return CHAKRAS[nextIndex].id;
+        });
+      }
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [isHovering]);
+
+  // Scroll logic for mobile/tablet/desktop to activate chakras
   useEffect(() => {
     const handleScroll = () => {
-      // Only run on mobile/tablet (smaller than lg breakpoint)
-      if (window.innerWidth >= 1024) return;
-
       const scrollY = window.scrollY;
       const screenHeight = window.innerHeight;
       
@@ -91,10 +109,10 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Center Content (Visualization) */}
-        <div className="w-full lg:w-1/3 flex justify-center items-center relative order-first lg:order-none mb-8 lg:mb-0">
+        <div className="w-full lg:w-1/3 flex justify-center items-center relative lg:order-none mb-8 lg:mb-0">
             <MeditatingSilhouette 
                 activeChakra={activeChakra} 
-                onHover={setActiveChakra} 
+                onHover={handleHover} 
             />
         </div>
 
@@ -102,7 +120,7 @@ const Hero: React.FC = () => {
           <div className="w-full lg:w-1/3 h-full flex items-center lg:items-start justify-end hidden md:flex">
              <ChakraList 
                 activeChakra={activeChakra} 
-                onHover={setActiveChakra} 
+                onHover={handleHover} 
              />
         </div>
 

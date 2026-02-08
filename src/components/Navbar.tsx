@@ -6,6 +6,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ onOpenServices }) => {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handle = () => setScrolled(window.scrollY > 8);
@@ -36,10 +37,11 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenServices }) => {
                         </div>
 
                         <div className="flex items-center gap-4">
-                                <a href="#consultation" aria-label="Book consultation" className="bg-white text-black px-5 py-2.5 rounded-full text-xs font-bold hover:bg-gray-200 transition-all flex items-center gap-2 font-inter-tight tracking-wide focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2">
-                                        Book Consultation
+                                <a href="#consultation" aria-label="Book consultation" className="relative hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold text-white bg-white/10 border border-white/10 hover:border-purple-500/50 hover:bg-white/5 overflow-hidden group transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent translate-x-[-100%] group-hover:animate-[shimmer_1.5s_infinite] z-0"></div>
+                                        <span className="relative z-10 font-inter-tight tracking-wide">Book Consultation</span>
                                         {/* @ts-ignore */}
-                                        <iconify-icon icon="solar:arrow-right-linear" width="14"></iconify-icon>
+                                        <iconify-icon icon="solar:arrow-right-linear" width="16" class="relative z-10 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-purple-400"></iconify-icon>
                                 </a>
                         </div>
                 </div>

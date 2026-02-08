@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
 
 const doctors = [
@@ -12,6 +12,43 @@ const doctors = [
 ];
 
 const Doctors: React.FC = () => {
+    const imageRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+             // Only apply scroll-based grayscale on mobile/tablet (< 1024px)
+            if (window.innerWidth >= 1024) {
+                if (imageRef.current) imageRef.current.style.filter = '';
+                return;
+            }
+
+            if (!imageRef.current) return;
+            const rect = imageRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Calculate how close the image center is to the viewport center
+            const elementCenter = rect.top + rect.height / 2;
+            const viewportCenter = windowHeight / 2;
+            const distance = Math.abs(viewportCenter - elementCenter);
+            const maxDistance = windowHeight / 1.5; // Range of effect
+            
+            // 0 = fully colored (center), 1 = grayscale (edge)
+            let grayscale = distance / maxDistance;
+            grayscale = Math.min(Math.max(grayscale, 0), 1); 
+
+            imageRef.current.style.filter = `grayscale(${grayscale})`;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
+    }, []);
+
     return (
         <section id="doctors" className="py-24 bg-theme-base border-t border-white/5 relative">
              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
@@ -49,9 +86,10 @@ const Doctors: React.FC = () => {
                                 <div className="aspect-[4/5] rounded-xl overflow-hidden mb-6 relative">
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity"></div>
                                     <img 
+                                        ref={imageRef}
                                         src={doc.image} 
                                         alt={doc.name} 
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 lg:filter lg:grayscale lg:group-hover:grayscale-0"
                                     />
                                     
                                     {/* Social/Contact Overlay - Slides up on hover */}

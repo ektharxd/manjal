@@ -6,6 +6,7 @@ import { CHAKRAS } from '../constants';
 const Hero: React.FC = () => {
   const [activeChakra, setActiveChakra] = useState<string | null>(null);
   const [isHovering, setIsHovering] = useState(false);
+  const mobileListRef = React.useRef<HTMLDivElement>(null);
 
   const handleHover = (id: string | null) => {
     setIsHovering(!!id);
@@ -35,24 +36,24 @@ const Hero: React.FC = () => {
       
       // Range where activation happens (e.g., first 50% of the screen height scrolling)
       // We map scroll position to chakra index (0 to 6)
-      const activationRange = screenHeight * 0.5; 
+      const activationRange = screenHeight; 
       
       if (scrollY < activationRange) {
         // Calculate index based on progress
         const index = Math.floor((scrollY / activationRange) * CHAKRAS.length);
         const safeIndex = Math.min(Math.max(index, 0), CHAKRAS.length - 1);
         
-        // Reverse order because usually we want Crown -> Root or Root -> Crown?
-        // CHAKRAS array is [Crown, Third Eye ... Root] (Top to Bottom)
-        // If we scroll down, we usually scan down the body. So index 0 at top is correct.
-        
-        setActiveChakra(CHAKRAS[safeIndex].id);
+        if (activeChakra !== CHAKRAS[safeIndex].id) {
+           setActiveChakra(CHAKRAS[safeIndex].id);
+        }
       } else {
-        // If scrolled past, keep the last one or clear? Let's clear after a bit more scroll
-        if (scrollY > activationRange + 100) {
-            setActiveChakra(null);
+        // Only clear if we are significantly past the hero section
+        if (scrollY > activationRange + 300) {
+            if (activeChakra !== null) setActiveChakra(null);
         } else {
-            setActiveChakra(CHAKRAS[CHAKRAS.length - 1].id);
+             if (activeChakra !== CHAKRAS[CHAKRAS.length - 1].id) {
+                setActiveChakra(CHAKRAS[CHAKRAS.length - 1].id);
+             }
         }
       }
     };
@@ -60,6 +61,27 @@ const Hero: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Scroll to active chakra card in mobile/tablet view safely
+  useEffect(() => {
+    if (activeChakra && mobileListRef.current) {
+        const activeCard = document.getElementById(`mobile-chakra-${activeChakra}`);
+        if(activeCard) {
+            const container = mobileListRef.current;
+            const cardLeft = activeCard.offsetLeft;
+            const cardWidth = activeCard.offsetWidth;
+            const containerWidth = container.offsetWidth;
+            
+            // Calculate center position
+            const targetScroll = cardLeft - (containerWidth / 2) + (cardWidth / 2);
+            
+            container.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+            });
+        }
+    }
+  }, [activeChakra]);
 
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#030305] pt-24 lg:pt-20">
@@ -117,19 +139,44 @@ const Hero: React.FC = () => {
         </div>
 
           {/* Right Content (Chakra List) */}
-          <div className="w-full lg:w-1/3 h-full flex items-center lg:items-start justify-end hidden md:flex">
+          <div className="w-full lg:w-1/3 h-full flex items-center lg:items-start justify-end hidden lg:flex">
              <ChakraList 
                 activeChakra={activeChakra} 
                 onHover={handleHover} 
              />
         </div>
 
-        {/* Mobile-only Horizontal List for Chakras */}
-        <div className="md:hidden w-full mt-4 overflow-x-auto pb-6 flex gap-3 snap-x px-4 no-scrollbar">
-            {/* Indicator */}
-            <div className="w-full text-center text-xs text-gray-600 font-inter-tight uppercase tracking-wider">
-                Explore Energy Centers
-            </div>
+        {/* Mobile/Tablet Horizontal List for Chakras */}
+        <div 
+            ref={mobileListRef}
+            className="lg:hidden w-full mt-8 overflow-x-auto pb-8 flex gap-4 snap-x px-6 no-scrollbar z-20"
+        >
+            {CHAKRAS.map((chakra) => {  
+                const isActive = activeChakra === chakra.id;
+                return (
+                <div 
+                    key={chakra.id}
+                    id={`mobile-chakra-${chakra.id}`}
+                    onClick={() => setActiveChakra(isActive ? null : chakra.id)}
+                    className={`snap-center shrink-0 w-64 p-4 rounded-2xl border backdrop-blur-md transition-all duration-300 ${
+                        isActive 
+                        ? 'bg-[#15151a]/90 border-white/20 shadow-xl scale-100' 
+                        : 'bg-white/5 border-white/5 text-gray-400'
+                    }`}
+                >
+                    <div className="flex items-center gap-4 mb-3">
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg ${isActive ? chakra.color + ' text-white' : 'bg-white/10'}`}>
+                             {/* @ts-ignore */}
+                            <iconify-icon icon={chakra.icon}></iconify-icon>
+                        </div>
+                        <h3 className={`font-bold font-inter-tight ${isActive ? 'text-white' : 'text-gray-400'}`}>{chakra.name}</h3>
+                    </div>
+                    <p className="text-xs text-gray-500 font-inter-tight line-clamp-2">{chakra.description}</p>
+                    <div className={`mt-3 text-[10px] font-bold tracking-widest uppercase ${isActive ? 'text-white/60' : 'text-gray-600'}`}>
+                        {chakra.sanskritName}
+                    </div>
+                </div>
+            )})}
         </div>
 
       </div>

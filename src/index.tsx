@@ -26,7 +26,7 @@ const App: React.FC = () => {
           <Doctors />
           <HospitalDetails />
           <Consultation />
-          <FloatingDock />
+          <FloatingDock onOpenServices={() => setShowAllServices(true)} />
           
           {/* Footer / Copyright */}
           <footer className="py-8 bg-black text-center text-gray-600 text-xs border-t border-white/5 font-inter-tight">

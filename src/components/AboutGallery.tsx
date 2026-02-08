@@ -24,17 +24,20 @@ const AboutGallery: React.FC = () => {
         <section id="about" className="py-24 bg-theme-base-alt relative overflow-hidden">
             {/* Gallery Modal */}
             {isGalleryOpen && (
-                <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
-                    <button 
-                        onClick={() => setIsGalleryOpen(false)}
-                        className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
-                    >
-                        {/* @ts-ignore */}
-                        <iconify-icon icon="solar:close-circle-bold" width="40"></iconify-icon>
-                    </button>
+                <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-0 md:p-8 animate-in fade-in duration-300">
+                    {/* Header / Close Bar */}
+                    <div className="w-full flex justify-end p-4 md:absolute md:top-6 md:right-6 z-50 bg-black/50 md:bg-transparent backdrop-blur-md md:backdrop-blur-none relative">
+                        <button 
+                            onClick={() => setIsGalleryOpen(false)}
+                            className="bg-zinc-800/80 md:bg-transparent p-2 rounded-full text-white/70 hover:text-white transition-all hover:bg-zinc-700/50"
+                        >
+                            {/* @ts-ignore */}
+                            <iconify-icon icon="solar:close-circle-bold" width="32" height="32" className="md:w-10 md:h-10"></iconify-icon>
+                        </button>
+                    </div>
 
-                    <div className="w-full max-w-7xl h-full overflow-y-auto custom-scrollbar">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+                    <div className="w-full h-full md:max-w-7xl overflow-y-auto custom-scrollbar px-4 custom-safe-area-bottom pb-20 md:pb-0">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20 pt-4 md:pt-0">
                             {albumPhotos.map((photo, index) => (
                                 <div key={index} className="group relative break-inside-avoid">
                                     <div className="aspect-[4/5] md:aspect-square w-full rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl relative bg-zinc-900">

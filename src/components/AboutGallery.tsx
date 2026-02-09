@@ -186,6 +186,7 @@ const AboutGallery: React.FC = () => {
 
     return (
         <section id="about" className="py-24 bg-theme-base-alt relative overflow-hidden">
+            <div className="breathing-ritual" aria-hidden="true"></div>
             {/* Gallery Modal */}
             {isGalleryOpen && (
                 <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm will-change-transform flex flex-col items-center justify-center p-0 md:p-8 animate-in fade-in duration-300">
@@ -201,10 +202,31 @@ const AboutGallery: React.FC = () => {
                     </div>
 
                     <div id="gallery-scroll" className="w-full h-full md:max-w-7xl overflow-y-auto custom-scrollbar px-4 custom-safe-area-bottom pb-20 md:pb-0">
-                        <div className="gallery-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20 pt-4 md:pt-0">
+                        <div className="cinematic-hero">
+                            <picture>
+                                <source type="image/avif" srcSet={buildSrcSet(albumPhotos[0].base, 'avif')} sizes="100vw" />
+                                <source type="image/webp" srcSet={buildSrcSet(albumPhotos[0].base, 'webp')} sizes="100vw" />
+                                <img
+                                    src={getDefaultSrc(albumPhotos[0].base)}
+                                    srcSet={buildSrcSet(albumPhotos[0].base, 'jpg')}
+                                    sizes="100vw"
+                                    alt="Gallery hero"
+                                    className="cinematic-hero-image"
+                                    decoding="async"
+                                />
+                            </picture>
+                            <div className="cinematic-hero-vignette"></div>
+                            <div className="cinematic-hero-leak"></div>
+                            <div className="cinematic-hero-grain"></div>
+                        </div>
+                        <div className="gallery-grid cinematic-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20 pt-4 md:pt-0">
                             {albumPhotos.map((photo, index) => {
                                 return (
-                                    <div key={index} className="gallery-item group relative">
+                                    <div
+                                        key={index}
+                                        className="gallery-item group relative"
+                                        style={{ ['--reveal-index' as const]: index } as React.CSSProperties}
+                                    >
                                         <div className="gallery-card w-full rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl relative bg-zinc-900">
                                             <LazyImage
                                                 photo={photo}
@@ -259,12 +281,12 @@ const AboutGallery: React.FC = () => {
                     {/* Left: Text Content */}
                     <div className="w-full lg:w-1/2 order-2 lg:order-1">
                         <ScrollReveal>
-                        <span className="text-purple-400 text-xs font-bold tracking-widest uppercase font-inter-tight flex items-center gap-2 mb-6">
+                        <span className="breathing-subtitle text-purple-400 text-xs font-bold tracking-widest uppercase font-inter-tight flex items-center gap-2 mb-6">
                             <span className="w-6 h-[1px] bg-purple-500"></span>
                             Our Heritage
                         </span>
                         
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 font-inter-tight leading-tight">
+                        <h2 className="breathing-title text-3xl md:text-5xl font-bold text-white mb-8 font-inter-tight leading-tight">
                             Where Ancient Wisdom <br/> 
                             <span className="text-gray-500">Meets Modern Care</span>
                         </h2>

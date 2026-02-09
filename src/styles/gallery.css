@@ -3,11 +3,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem; /* matches Tailwind gap-6 */
+  grid-auto-flow: row dense;
 }
 
 /* Default card aspect ratio (portrait-friendly) */
 #gallery-scroll .gallery-card {
   aspect-ratio: 4 / 5;
+  content-visibility: auto;
+  contain: layout paint style;
+  contain-intrinsic-size: 320px 400px;
 }
 
 /* Landscape devices: wider cards */
@@ -29,6 +33,10 @@
 #gallery-scroll .gallery-card img {
   transition: opacity 260ms ease, transform 420ms ease;
   opacity: 1;
+}
+#gallery-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 #gallery-scroll .gallery-card .loading-placeholder {
   background: linear-gradient(180deg, #111217 0%, #0f1113 100%);

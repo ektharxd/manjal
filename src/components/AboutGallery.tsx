@@ -6,16 +6,25 @@ import '../styles/gallery.css';
 // Files are loaded from the "public" folder.
 // Note: Spaces in filenames should be replaced with %20 if they don't load.
 const albumPhotos = [
-    '/rebuilding-wallpaper.jpg',
-    '/wallhaven-jeew7y.jpg',
-    '/rebuilding-wallpaper - Copy.jpg',
-    '/wallhaven-jeew7y - Copy.jpg',
-    '/rebuilding-wallpaper - Copy (2).jpg',
-    '/wallhaven-jeew7y - Copy (2).jpg',
-    '/rebuilding-wallpaper - Copy (3).jpg',
-    '/wallhaven-jeew7y - Copy (3).jpg',
-    '/rebuilding-wallpaper - Copy (4).jpg',
-    '/wallhaven-jeew7y - Copy (4).jpg'
+    '/1 (1).JPG',
+    '/1 (2).JPG',
+    '/1 (3).JPG',
+    '/1 (4).JPG',
+    '/1 (5).JPG',
+    '/1 (6).JPG',
+    '/1 (7).JPG',
+    '/1 (8).JPG',
+    '/1 (9).JPG',
+    '/1 (10).JPG',
+    '/1 (11).JPG',
+    '/1 (12).JPG',
+    '/1 (13).JPG',
+    '/1 (14).JPG',
+    '/1 (15).JPG',
+    '/1 (16).JPG',
+    '/1 (17).JPG',
+    '/1 (18).JPG',
+    '/1 (19).JPG',
 ];
 
 const LazyImage: React.FC<{
@@ -24,9 +33,8 @@ const LazyImage: React.FC<{
     className?: string;
     photosLoadStarted: boolean;
     rootId?: string;
-    onLoadDims?: (w: number, h: number) => void;
     onClick?: () => void;
-}> = ({ src, alt = '', className = '', photosLoadStarted, rootId = 'gallery-scroll', onLoadDims, onClick }) => {
+}> = ({ src, alt = '', className = '', photosLoadStarted, rootId = 'gallery-scroll', onClick }) => {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
     const [visible, setVisible] = useState(false);
     const [loaded, setLoaded] = useState(false);
@@ -65,7 +73,6 @@ const LazyImage: React.FC<{
                     onLoad={(e) => {
                         const img = e.currentTarget as HTMLImageElement;
                         setLoaded(true);
-                        if (onLoadDims) onLoadDims(img.naturalWidth, img.naturalHeight);
                         // ensure visible after load
                         img.style.visibility = 'visible';
                     }}
@@ -81,7 +88,6 @@ const LazyImage: React.FC<{
 const AboutGallery: React.FC = () => {
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
     const [photosLoadStarted, setPhotosLoadStarted] = useState(false);
-    const [aspectMap, setAspectMap] = useState<Record<number, number>>({});
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     useEffect(() => {
@@ -121,11 +127,6 @@ const AboutGallery: React.FC = () => {
         return;
     }, [activeIndex]);
 
-    const setAspect = (index: number, w: number, h: number) => {
-        if (!w || !h) return;
-        setAspectMap((m) => ({ ...m, [index]: w / h }));
-    };
-
     const openAt = (index: number) => {
         // Close the modal when opening the fullscreen lightbox to avoid overlay stacking
         setIsGalleryOpen(false);
@@ -156,17 +157,14 @@ const AboutGallery: React.FC = () => {
                     <div id="gallery-scroll" className="w-full h-full md:max-w-7xl overflow-y-auto custom-scrollbar px-4 custom-safe-area-bottom pb-20 md:pb-0">
                         <div className="gallery-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20 pt-4 md:pt-0">
                             {albumPhotos.map((photo, index) => {
-                                const ratio = aspectMap[index];
-                                const style: React.CSSProperties | undefined = ratio ? { aspectRatio: `${Math.round(ratio * 100)}/${100}` } : undefined;
                                 return (
-                                    <div key={index} className="gallery-item group relative break-inside-avoid">
-                                        <div style={style} className="gallery-card w-full rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl relative bg-zinc-900">
+                                    <div key={index} className="gallery-item group relative">
+                                        <div className="gallery-card w-full rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl relative bg-zinc-900">
                                             <LazyImage
                                                 src={photo}
                                                 alt={`Gallery item ${index + 1}`}
                                                 photosLoadStarted={photosLoadStarted}
                                                 rootId="gallery-scroll"
-                                                onLoadDims={(w, h) => setAspect(index, w, h)}
                                                 onClick={() => openAt(index)}
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>

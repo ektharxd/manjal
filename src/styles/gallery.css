@@ -189,35 +189,12 @@
   }
 }
 
-.breathing-ritual {
-  position: absolute;
-  inset: -30% -10% 0;
-  background: radial-gradient(50% 45% at 50% 0%, rgba(20, 184, 166, 0.35), rgba(8, 10, 12, 0) 70%),
-    radial-gradient(60% 50% at 10% 20%, rgba(16, 185, 129, 0.25), rgba(0, 0, 0, 0) 70%);
-  opacity: 0.8;
-  animation: breatheGlow 9s ease-in-out infinite;
-  pointer-events: none;
-}
-
 .breathing-title {
   animation: breatheText 9s ease-in-out infinite;
 }
 
 .breathing-subtitle {
   animation: breatheTextSoft 9s ease-in-out infinite;
-}
-
-@keyframes breatheGlow {
-  0%, 100% {
-    filter: blur(0px);
-    opacity: 0.6;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    filter: blur(6px);
-    opacity: 1;
-    transform: translate3d(0, 2%, 0) scale(1.05);
-  }
 }
 
 @keyframes breatheText {
@@ -250,7 +227,6 @@
 @media (prefers-reduced-motion: reduce) {
   #gallery-scroll .cinematic-hero-leak,
   #gallery-scroll .cinematic-reveal .gallery-item,
-  .breathing-ritual,
   .breathing-title,
   .breathing-subtitle {
     animation: none;

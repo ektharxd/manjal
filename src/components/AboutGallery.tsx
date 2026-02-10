@@ -186,7 +186,6 @@ const AboutGallery: React.FC = () => {
 
     return (
         <section id="about" className="py-24 bg-theme-base-alt relative overflow-hidden">
-            <div className="breathing-ritual" aria-hidden="true"></div>
             {/* Gallery Modal */}
             {isGalleryOpen && (
                 <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm will-change-transform flex flex-col items-center justify-center p-0 md:p-8 animate-in fade-in duration-300">

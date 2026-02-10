@@ -68,8 +68,8 @@ const Doctors: React.FC = () => {
                     {/* Quote */}
                     <div className="order-2 md:order-1 relative p-6 md:p-10">
                         <ScrollReveal delay="delay-100">
-                        <span className="absolute -top-4 -left-4 text-[10rem] text-white/5 font-serif select-none leading-none">"</span>
-                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight font-playfair relative z-10 italic tracking-wide">
+                        <span className="absolute -top-4 -left-4 text-[10rem] text-white/5 font-priestacy select-none leading-none">"</span>
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight font-priestacy relative z-10 italic tracking-wide">
                             True healing begins when the physician looks beyond symptoms and understands the person behind the disease.
                         </h3>
                         <div className="w-16 h-1.5 bg-green-500 rounded-full mt-8 shadow-[0_0_15px_rgba(34,197,94,0.6)]"></div>

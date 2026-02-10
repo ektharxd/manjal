@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Keep page background aligned with the app shell */
+body {
+  background-color: #030305;
+  color: white;
+}

@@ -106,13 +106,22 @@ const Hero: React.FC = () => {
                 <span>Traditional Healing</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1] font-inter-tight">
-                MANJAL <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-200 via-fuchsia-200 to-white">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6">
+              <img
+                src="/logo.png"
+                alt="Manjal Ayurveda logo"
+                className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain shrink-0"
+              />
+              <div className="text-center sm:text-left">
+                <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight text-white leading-[1.1] font-inter-tight">
+                  MANJAL <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-200 via-fuchsia-200 to-white">
                     AYURVEDA
-                </span><br/>
-                <span className="text-2xl md:text-3xl font-light text-gray-400">SPECIALITY CLINIC</span>
-            </h1>
+                  </span><br/>
+                  <span className="text-2xl md:text-3xl font-light text-gray-400">SPECIALITY CLINIC</span>
+                </h1>
+              </div>
+            </div>
             
             <p className="text-gray-400 text-base md:text-lg font-light leading-relaxed max-w-md mx-auto lg:mx-0 mb-8 font-inter-tight">
                 Experience authentic Ayurvedic treatments tailored to restore your natural balance. Discover the ancient wisdom of healing in a modern sanctuary.

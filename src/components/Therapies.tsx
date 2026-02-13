@@ -23,7 +23,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Reduce Stress & Anxiety',
     icon: 'ri:drop-fill',
     color: 'text-purple-400',
-    image: '/assets/treatments/shirodhara.svg',
+    image: 'public/assets/treatments/shirodhara.svg',
     details: [
       'Reduce stress and anxiety.',
       'Improves memory.',
@@ -48,7 +48,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Calming for the Nerves',
     icon: 'solar:hand-stars-bold-duotone',
     color: 'text-amber-400',
-    image: '/assets/treatments/abhyanga.svg',
+    image: 'public/assets/treatments/abhyanga.svg',
     details: [
       'Calming for the Nerves.',
       'Increased mental alertness.',
@@ -78,7 +78,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Rejuvenate the tissues',
     icon: 'solar:bone-bold-duotone',
     color: 'text-orange-400',
-    image: '/assets/treatments/navara jizhi.svg',
+    image: 'public/assets/treatments/navara jizhi.svg',
     details: [
       'Provides strength and rejuvenate the tissues.',
       'Relief from pain, inflamation and stiffness.',
@@ -102,7 +102,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Relieves body pain & stiffness',
     icon: 'solar:leaf-bold-duotone',
     color: 'text-lime-400',
-    image: '/assets/treatments/elakizhi.svg',
+    image: 'public/assets/treatments/elakizhi.svg',
     details: [
       'Relieves body pain and stiffnes.',
       'Remove dryness of the skin.',
@@ -125,7 +125,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Balance Vata and Kapha',
     icon: 'ph:head-circuit-duotone',
     color: 'text-blue-400',
-    image: '/assets/treatments/shirovasti.svg',
+    image: 'public/assets/treatments/shirovasti.svg',
     details: [
       'Indicated in paralysis.',
       'Reduces anxiety and stress.',
@@ -149,7 +149,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Stabilize nervous system',
     icon: 'solar:sleeping-bold-duotone',
     color: 'text-indigo-400',
-    image: '/assets/treatments/thala pothichil.svg',
+    image: 'public/assets/treatments/thala pothichil.svg',
     details: [
       'Improves quality of sleep.',
       'Stabilize the nervous system.',
@@ -172,7 +172,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Ear care & cleansing',
     icon: 'lucide:ear',
     color: 'text-pink-400',
-    image: '/assets/treatments/karna pooranam.svg',
+    image: 'public/assets/treatments/karna pooranam.svg',
     details: [
       'Relieves earache.',
       'Cleanses ear canal.',
@@ -196,7 +196,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Weight & fat reduction',
     icon: 'solar:body-bold-duotone',
     color: 'text-rose-400',
-    image: '/assets/treatments/udwarthanam.svg',
+    image: 'public/assets/treatments/udwarthanam.svg',
     details: [
       'Reduce excess fat.',
       'Helps in weight reduction.',
@@ -222,7 +222,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Treats rheumatic diseases',
     icon: 'solar:waterdrops-bold-duotone',
     color: 'text-cyan-400',
-    image: '/assets/treatments/pizhichil.svg',
+    image: 'public/assets/treatments/pizhichil.svg',
     details: [
       'Relives fatigue.',
       'Rejuvenates the skin.',
@@ -247,7 +247,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Clear mucous blockages',
     icon: 'healthicons:nose',
     color: 'text-emerald-400',
-    image: '/assets/treatments/nasyam.svg',
+    image: 'public/assets/treatments/nasyam.svg',
     details: [
       'Clear mucous blockages.',
       'Opens blocked channels.',
@@ -270,7 +270,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Relax body & mind',
     icon: 'solar:sun-fog-bold-duotone',
     color: 'text-yellow-400',
-    image: '/assets/treatments/ksheera dhara.svg',
+    image: 'public/assets/treatments/ksheera dhara.svg',
     details: [
       'Relieves from fatigue',
       'Boost memory power',
@@ -293,7 +293,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Calms the nervous system',
     icon: 'solar:meditation-round-bold-duotone',
     color: 'text-teal-400',
-    image: '/assets/treatments/takra dhara.svg',
+    image: 'public/assets/treatments/takra dhara.svg',
     details: [
       'Helps over come stress & calms the nervous system',
       'Relieves insomnia, anxiety and chronic headaches',
@@ -313,7 +313,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Improves circulation',
     icon: 'solar:heart-pulse-bold-duotone',
     color: 'text-red-400',
-    image: '/assets/treatments/kashaya dhara.svg',
+    image: 'public/assets/treatments/kashaya dhara.svg',
     details: [
       'Improves circulation to the skin',
       'Reduce skin inflamation, pain & stifness',
@@ -337,7 +337,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Exfoliate & nourish skin',
     icon: 'lucide:sparkles',
     color: 'text-fuchsia-400',
-    image: '/assets/treatments/mukh lepam.svg',
+    image: 'public/assets/treatments/mukh lepam.svg',
     details: [
       'Exfoliate the skin',
       'Clear the debris',
@@ -361,7 +361,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Revitalize body & mind',
     icon: 'mdi:spa',
     color: 'text-violet-400',
-    image: '/assets/treatments/rejuvenation.svg',
+    image: 'public/assets/treatments/rejuvenation.svg',
     details: [
       'It helps alleviate tension and stress to our bodies',
       'Improves circulation',
@@ -385,7 +385,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Scalp & migraine relief',
     icon: 'lucide:snowflake',
     color: 'text-sky-400',
-    image: '/assets/treatments/shiropichu.svg',
+    image: 'public/assets/treatments/shiropichu.svg',
     details: [
       'Reduces the burning sensation in the scalp',
       'Prevents hair fall, split hair and premature greying',
@@ -410,7 +410,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Low back muscle care',
     icon: 'icon-park-twotone:muscle',
     color: 'text-orange-500',
-    image: '/assets/treatments/kati vasti.svg',
+    image: 'public/assets/treatments/kati vasti.svg',
     details: [
       'Strengthening the low back muscles',
       'Increase blood supply for lumbar muscles',
@@ -432,7 +432,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Knee joint care',
     icon: 'solar:walking-round-bold-duotone',
     color: 'text-green-500',
-    image: '/assets/treatments/janu vasti.svg',
+    image: 'public/assets/treatments/janu vasti.svg',
     details: [
       'Relief of knee joint pain',
       'Helps alleviate osteo arthritis of the knee joint',
@@ -453,7 +453,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Pain & swelling relief',
     icon: 'lucide:bandage',
     color: 'text-amber-500',
-    image: '/assets/treatments/upanaha swda.svg',
+    image: 'public/assets/treatments/upanaha swda.svg',
     details: [
       'Relieves pain, swelling & nourishes the tissues',
       'Reduces the inflammation of the joints',
@@ -475,7 +475,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Vata related issues',
     icon: 'solar:bath-bold-duotone',
     color: 'text-blue-500',
-    image: '/assets/treatments/avagaha sweda.svg',
+    image: 'public/assets/treatments/avagaha sweda.svg',
     details: [
       'Warm water is regularly replenished to maintain the temperature.',
       'Commonly prescribed for the treatment of Vata related issues.',
@@ -492,7 +492,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Therapeutic Enema',
     icon: 'solar:tube-bold-duotone',
     color: 'text-indigo-500',
-    image: '/assets/treatments/matra vasti.svg',
+    image: 'public/assets/treatments/matra vasti.svg',
     details: [
       'Best treatmet for vata vyadhies',
       'Medicated oil is administered through the anus.',
@@ -510,7 +510,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Eye care therapy',
     icon: 'solar:eye-bold-duotone',
     color: 'text-cyan-500',
-    image: '/assets/treatments/tarpanam.svg',
+    image: 'public/assets/treatments/tarpanam.svg',
     details: [
       'Improves the vision',
       'Removes dark circles under the eyes',
@@ -531,7 +531,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Eye stress relief',
     icon: 'solar:eye-closed-bold-duotone',
     color: 'text-emerald-500',
-    image: '/assets/treatments/netra_dhara.svg',
+    image: 'public/assets/treatments/netra_dhara.svg',
     details: [
       'Reduce stress and anxiety.',
       'Improves memory.',
@@ -553,7 +553,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Blood purification',
     icon: 'solar:adhesive-plaster-bold-duotone',
     color: 'text-red-500',
-    image: '/assets/treatments/leach_therapy.svg',
+    image: 'public/assets/treatments/leach_therapy.svg',
     details: [
       'Diabetic foot ulcer',
       'For skin problems',
@@ -577,7 +577,7 @@ const treatments: Treatment[] = [
     shortDescription: 'Post-natal Care Packages',
     icon: 'solar:user-heart-bold-duotone',
     color: 'text-pink-500',
-    image: '/assets/treatments/prasava_raksha.svg',
+    image: 'public/assets/treatments/prasava_raksha.svg',
     details: [
       'Ved Bath & Ved Kizhi',
       'Lepanas for stretch marks',

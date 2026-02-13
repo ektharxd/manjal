@@ -490,7 +490,7 @@ const treatments: Treatment[] = [
     id: 'matra-vasti',
     name: 'Matra Vasti (മാത്ര വസ്‌തി)',
     shortDescription: 'Therapeutic Enema',
-    icon: 'solar:tube-bold-duotone',
+    icon: 'solar:syringe-bold-duotone',
     color: 'text-indigo-500',
     image: '/assets/treatments/matra%20vasti.svg',
     details: [

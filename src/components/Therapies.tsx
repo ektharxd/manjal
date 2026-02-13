@@ -71,14 +71,14 @@ const treatments: Treatment[] = [
       'സന്ധികളുടെ ചലനം മെച്ചപ്പെടുത്തുന്നു.'
     ]
   },
-  // 3. Navara Kizhi (Note filename typo in source: 'navara jizhi')
+  // 3. Navara Kizhi (Filename typo: 'navara jizhi')
   {
     id: 'navara-kizhi',
     name: 'Navara Kizhi (നവര കിഴി)',
     shortDescription: 'Rejuvenate the tissues',
     icon: 'solar:bone-bold-duotone',
     color: 'text-orange-400',
-    image: '/assets/treatments/navara jizhi.svg', 
+    image: '/assets/treatments/navara jizhi.svg',
     details: [
       'Provides strength and rejuvenate the tissues.',
       'Relief from pain, inflamation and stiffness.',
@@ -446,14 +446,14 @@ const treatments: Treatment[] = [
       'ഓസ്റ്റിയോ ആർത്രൈറ്റിസ്, ഓസ്റ്റിയോ പോറോസിസ് തുടങ്ങിയ രോഗങ്ങൾക്ക് ഉത്തമം'
     ]
   },
-  // 19. Upanaha Sweda (Note filename typo: 'swda')
+  // 19. Upanaha Sweda (Filename typo: 'swda')
   {
     id: 'upanaha-sweda',
     name: 'Upanaha Sweda (ഉപനഹ സ്വേദനം)',
     shortDescription: 'Pain & swelling relief',
     icon: 'lucide:bandage',
     color: 'text-amber-500',
-    image: '/assets/treatments/upanaha swda.svg', 
+    image: '/assets/treatments/upanaha swda.svg',
     details: [
       'Relieves pain, swelling & nourishes the tissues',
       'Reduces the inflammation of the joints',
@@ -524,7 +524,7 @@ const treatments: Treatment[] = [
       'കണ്ണിന് ഇടവിട്ട് വരുന്ന ചൊറിച്ചിൽ, വേദന, ചുവപ്പ് തുടങ്ങിയ രോഗങ്ങൾക്ക് ഉത്തമം'
     ]
   },
-  // 23. Netra Dhara (Note filename: 'netra_dhara')
+  // 23. Netra Dhara (Filename: 'netra_dhara')
   {
     id: 'netra-dhara',
     name: 'Netra Dhara (നേത്രധാര)',
@@ -546,7 +546,7 @@ const treatments: Treatment[] = [
       'ഉറക്കമില്ലായ്മക്കുള്ള പരിഹാരം.'
     ]
   },
-  // 24. Leech Therapy (Note filename: 'leach_therapy')
+  // 24. Leech Therapy (Filename: 'leach_therapy')
   {
     id: 'leech-therapy',
     name: 'Leech Therapy (ലീച്ച് തെറാപ്പി)',
@@ -570,7 +570,7 @@ const treatments: Treatment[] = [
       'വെരിക്കോസ് വെയിന്‍, വ്രണം സുഖപ്പെടുത്തുന്നു'
     ]
   },
-  // 25. Prasava Raksha (Note filename: 'prasava_raksha')
+  // 25. Prasava Raksha (Filename: 'prasava_raksha')
   {
     id: 'prasava-raksha',
     name: 'Prasava Raksha (പ്രസവ രക്ഷ)',
@@ -596,6 +596,7 @@ const treatments: Treatment[] = [
 const Therapies: React.FC = () => {
   const [selectedTreatment, setSelectedTreatment] = useState<Treatment | null>(null);
 
+  // Lock body scroll when canvas is open
   useEffect(() => {
     if (selectedTreatment) {
       document.body.style.overflow = 'hidden';
@@ -673,32 +674,33 @@ const Therapies: React.FC = () => {
           {/* Drawer Panel */}
           <div className="relative w-full max-w-md bg-[#0a0a0c] h-full border-l border-white/10 shadow-2xl overflow-y-auto animate-slide-in-right flex flex-col">
             
-            {/* Header Image Section (Half Screen Curved) */}
-            <div className="relative w-full shrink-0">
+            {/* HERO IMAGE SECTION
+               Taking up ~45% of the drawer height with the curved image at the top 
+            */}
+            <div className="relative w-full h-[45vh] shrink-0 bg-[#0a0a0c]">
                 {/* Close Button - Floating */}
                 <button
                   onClick={() => setSelectedTreatment(null)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md text-white border border-white/10 transition-all z-50 cursor-pointer"
+                  className="absolute top-6 right-6 p-2 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md text-white border border-white/10 transition-all z-50 cursor-pointer"
                 >
                   {/* @ts-ignore */}
                   <iconify-icon icon="mingcute:close-line" width="24" height="24"></iconify-icon>
                 </button>
 
-                {/* The Image Itself */}
-                <div className="w-full relative">
+                {/* The Curved Image */}
+                <div className="w-full h-full relative flex items-start justify-center overflow-hidden">
                   <img 
                     src={selectedTreatment.image} 
                     alt={selectedTreatment.name} 
-                    className="w-full h-auto object-cover block"
+                    className="w-full h-full object-cover object-top"
                   />
-                  {/* Optional: If the SVG itself doesn't contain the fade, this gradient helps blend it 
-                      However, since you said they are curvy SVGs, we assume the shape is in the file. 
-                  */}
+                  {/* Gradient Overlay at bottom to blend into text section (optional, remove if image handles it) */}
+                  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#0a0a0c] to-transparent pointer-events-none"></div>
                 </div>
             </div>
 
-            {/* Scrollable Content Section */}
-            <div className="flex-1 p-8 pt-6 relative z-10 bg-[#0a0a0c]">
+            {/* CONTENT SECTION */}
+            <div className="flex-1 p-8 -mt-6 relative z-10 bg-[#0a0a0c]">
               
               <h2 className="text-3xl font-bold text-white mb-2 font-inter-tight leading-tight">
                   {selectedTreatment.name.split('(')[0]}
@@ -712,7 +714,7 @@ const Therapies: React.FC = () => {
                 {selectedTreatment.shortDescription}
               </p>
 
-              {/* Decorative Leaf Icon */}
+              {/* Decorative Leaf Icon matching your design */}
               <div className={`mb-6 ${selectedTreatment.color} opacity-80`}>
                  {/* @ts-ignore */}
                 <iconify-icon icon="solar:leaf-bold-duotone" width="20"></iconify-icon>
@@ -727,7 +729,7 @@ const Therapies: React.FC = () => {
                   <ul className="space-y-3">
                     {selectedTreatment.details.map((point, i) => (
                       <li key={i} className="flex items-start text-gray-300 font-light leading-relaxed text-sm">
-                        <span className="mt-1.5 mr-3 w-1 h-1 bg-white/40 rounded-full flex-shrink-0"></span>
+                        <span className="mt-1.5 mr-3 w-1.5 h-1.5 bg-white/40 rounded-full flex-shrink-0"></span>
                         {point}
                       </li>
                     ))}
@@ -746,7 +748,7 @@ const Therapies: React.FC = () => {
                         className="flex items-start text-gray-300 font-light leading-relaxed text-sm"
                         style={{ fontFamily: "'Manjari', sans-serif" }}
                       >
-                        <span className="mt-2 mr-3 w-1 h-1 bg-white/40 rounded-full flex-shrink-0"></span>
+                        <span className="mt-2 mr-3 w-1.5 h-1.5 bg-white/40 rounded-full flex-shrink-0"></span>
                         {point}
                       </li>
                     ))}
@@ -754,10 +756,10 @@ const Therapies: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-white/5">
+              <div className="mt-12 pt-8 border-t border-white/5 pb-8">
                 <button
                     onClick={() => setSelectedTreatment(null)}
-                    className="w-full py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium transition-all"
+                    className="w-full py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium transition-all border border-white/5"
                 >
                     Close
                 </button>

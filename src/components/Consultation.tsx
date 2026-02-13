@@ -98,7 +98,7 @@ _Sent via Manjal Ayurveda Website_
                         </div>
 
                         <a 
-                            href="https://wa.me/918086728253" 
+                            href="https://wa.me/917907178727" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-white-forced py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-3 transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,211,102,0.3)] group"
@@ -205,7 +205,7 @@ _Sent via Manjal Ayurveda Website_
                                         <option value="" className="bg-[#0a0a0c] text-gray-500">Select a treatment...</option>
                                         <option value="panchakarma" className="bg-[#0a0a0c]">Panchakarma (Detox)</option>
                                         <option value="abhyanga" className="bg-[#0a0a0c]">Abhyanga (Massage)</option>
-                                        <option value="shirodhara" className="bg-[#0a0a0c]">(ശിരോധാര)</option>
+                                        <option value="shirodhara" className="bg-[#0a0a0c]">Shirodhara (Relaxation)</option>
                                         <option value="consultation" className="bg-[#0a0a0c]">General Ayurvedic Consultation</option>
                                     </select>
                                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">

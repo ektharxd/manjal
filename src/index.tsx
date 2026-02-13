@@ -2,6 +2,7 @@ import React, { useState, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import LoadingIntro from './components/LoadingIntro';
+import { Analytics } from "@vercel/analytics/react";
 
 const AboutGallery = lazy(() => import('./components/AboutGallery'));
 const Therapies = lazy(() => import('./components/Therapies'));

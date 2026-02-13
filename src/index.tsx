@@ -1,4 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import LoadingIntro from './components/LoadingIntro';
@@ -57,6 +58,7 @@ const App: React.FC = () => {
           </footer>
         </>
       )}
+      <Analytics />
     </main>
   );
 };
